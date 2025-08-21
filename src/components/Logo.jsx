@@ -6,9 +6,9 @@ export default function Logo() {
   return (
     <>
       <Link href="/">
-        <div className="flex items-center gap-1 text-lg font-semibold tracking-tighter ">
+        <div className="flex items-center gap-1 text-xl font-semibold tracking-tighter text-primary ">
           {/* <Image src="/" alt="logo" width={40} height={40}></Image> */}
-          Shopflow
+          ShopFlow
         </div>
       </Link>
     </>

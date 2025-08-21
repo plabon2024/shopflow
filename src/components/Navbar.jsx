@@ -33,7 +33,7 @@ export default function Navbar() {
   console.log("nav 13:", status);
   console.log("nav 13:", data);
   return (
-    <section className="py-4  sticky top-0 backdrop-blur-3xl z-50">
+    <section className="py-4  sticky top-0 backdrop-blur-3xl bg-primary/30 z-50">
       <div className="container mx-auto">
         <nav className="flex items-center justify-between px-4">
           <span>
@@ -54,19 +54,19 @@ export default function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
-               {status === "authenticated" ? (
-                    <Link href="/dashbord">
-                      {" "}
-                      <Button>{data?.user?.name}</Button>
-                    </Link>
-                  ) : (
-                    <>
-                      {" "}
-                      <Link href="/signin">
-                        <Button>Sign in</Button>
-                      </Link>
-                    </>
-                  )}
+            {status === "authenticated" ? (
+              <Link href="/dashbord">
+                {" "}
+                <Button>{data?.user?.name}</Button>
+              </Link>
+            ) : (
+              <>
+                {" "}
+                <Link href="/signin">
+                  <Button>Sign in</Button>
+                </Link>
+              </>
+            )}
             <ThemeToggle></ThemeToggle>
           </div>
           <Sheet>

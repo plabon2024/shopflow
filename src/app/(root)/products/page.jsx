@@ -1,0 +1,11 @@
+
+import AllProduct from '@/components/AllProduct'
+import React from 'react'
+
+export default function page() {
+  return (
+    <div className='container mx-auto'>
+      <AllProduct></AllProduct>
+    </div>
+  )
+}
