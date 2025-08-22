@@ -13,20 +13,29 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { toast } from "sonner";
 
 export function SigninForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(email);
+    setLoading(true)
     const result = await signIn("credentials", {
       email,
       password,
       redirect: false,
     });
-    console.log("login result", result);
+
+    setLoading(false);
+
+    if (result?.error) {
+      toast.error(result.error || "Invalid email or password");
+    } else {
+      toast.success("Login successful!");
+    }
   }
   return (
     <div className="flex flex-col gap-6 ">
@@ -71,9 +80,9 @@ export function SigninForm() {
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
-                  Login
-                </Button>
+               <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Signing in..." : "Login"}
+            </Button>
               </div>
             </div>{" "}
           </form>{" "}

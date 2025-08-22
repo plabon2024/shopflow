@@ -3,7 +3,7 @@ import React from "react";
 import Footer from "@/components/Footer";
 export default function layout({ children }) {
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <Navbar></Navbar>
       {children}
       <Footer></Footer>

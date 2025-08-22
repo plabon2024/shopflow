@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
+import ProductCard from "./ProductCard";
 
 
 export default function AllProduct() {
@@ -21,20 +22,15 @@ export default function AllProduct() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {products.map((product) => (
-            <div
-              key={product.id}
-              className="border p-4 rounded shadow hover:shadow-md transition"
-            >
-              <h2 className="font-semibold text-lg">{product.name}</h2>
-              <p className="text-sm mt-2">{product.description}</p>
-              <p className="mt-2 font-bold">${product.price}</p>
-              <button
-                onClick={() => router.push(`/products/${product.id}`)}
-                className="mt-3 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-              >
-                Details
-              </button>
-            </div>
+      <ProductCard
+        image={product.image}
+        name={product.name}
+        category={product.category}
+        rating={product.rating}
+        description={product.description}
+        price={product.price}
+        stock={product.stock}
+      />
           ))}
         </div>
       )}

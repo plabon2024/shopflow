@@ -61,7 +61,12 @@ const authOptions = {
         // Optionally update existing user with provider info
         await userCollection.updateOne(
           { email: user.email },
-          { $set: { provider: account.provider, image: user.image || existingUser.image } }
+          {
+            $set: {
+              provider: account.provider,
+              image: user.image || existingUser.image,
+            },
+          }
         );
       }
       return true;
@@ -97,6 +102,9 @@ const authOptions = {
       session.user = token.user;
       return session;
     },
+  },
+  async redirect({ url, baseUrl }) {
+    return "/products";
   },
   pages: {
     signIn: "/signin",

@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "next-auth/react";
+import { toast } from "sonner";
 
 export function SignupForm() {
   const [loading, setLoading] = useState(false);
@@ -33,10 +34,11 @@ export function SignupForm() {
       const result = await res.json();
 
       if (!res.ok) throw new Error(result.error || "Failed to register");
-
+      toast.success("Signup successful! Please login now.");
       router.push("/signin");
     } catch (err) {
       setError(err.message);
+      toast.error(err.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -90,10 +92,9 @@ export function SignupForm() {
                 {loading ? "Creating account..." : "Sign Up"}
               </Button>
             </div>
-          
           </form>
           <div className="pt-6">
-              <Button
+            <Button
               onClick={() => signIn("google")}
               variant="outline"
               className="w-full flex"
@@ -130,7 +131,6 @@ export function SignupForm() {
                 Sign In
               </Link>
             </div>
-
           </div>
         </CardContent>
       </Card>

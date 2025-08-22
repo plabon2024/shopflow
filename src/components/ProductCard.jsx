@@ -37,7 +37,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className=" rounded-xl overflow-hidden  hover:shadow-lg transition shadow-md w-80">
+    <div className=" rounded-xl overflow-hidden   transition hover:shadow-[4px_4px_22px_5px] shadow-[0px_0px_9px_3px] shadow-primary/20 w-80">
       {/* Image + Category */}
       <div className="relative">
         <img src={image} alt={name} className="w-full h-48 object-cover" />

@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+
 import { FaXTwitter } from "react-icons/fa6";
 
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -26,8 +24,9 @@ const Footer04Page = () => {
         <div className="container mx-auto">
           <div className="py-12 flex flex-col sm:flex-row items-start justify-between gap-x-8 gap-y-10 px-6 xl:px-0">
             <div>
-              {/* Logo */}
-              <Logo></Logo>
+              <Link href={"/"}>
+                <Logo></Logo>
+              </Link>
               <p className="max-w-md py-5">
                 ShopFlow is a lightweight e-commerce platform designed for small
                 businesses and individuals who want a simple way to showcase and

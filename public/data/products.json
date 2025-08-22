@@ -1,20 +1,47 @@
 [
   {
-    "id": 1,
-    "name": "Product A",
-    "description": "This is Product A",
-    "price": 29.99
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+    "name": "Modern Sofa",
+    "category": "Furniture",
+    "rating": 4.8,
+    "description": "A sleek, modern sofa with plush cushioning and durable fabric, perfect for contemporary living spaces.",
+    "price": 599.99,
+    "stock": 12
   },
   {
-    "id": 2,
-    "name": "Product B",
-    "description": "This is Product B",
-    "price": 49.99
+    "image": "https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "name": "Wireless Headphones",
+    "category": "Electronics",
+    "rating": 4.5,
+    "description": "High-quality wireless headphones with noise cancellation and up to 20 hours of battery life.",
+    "price": 129.99,
+    "stock": 25
   },
   {
-    "id": 3,
-    "name": "Product C",
-    "description": "This is Product C",
-    "price": 19.99
+    "image": "https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "name": "Organic Coffee Beans",
+    "category": "Food & Beverage",
+    "rating": 4.7,
+    "description": "Premium organic coffee beans, ethically sourced, with a rich and bold flavor profile.",
+    "price": 14.99,
+    "stock": 50
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+    "name": "Running Shoes",
+    "category": "Sportswear",
+    "rating": 4.6,
+    "description": "Lightweight running shoes with breathable mesh and superior cushioning for ultimate comfort.",
+    "price": 89.99,
+    "stock": 30
+  },
+  {
+    "image": "https://images.pexels.com/photos/4158/apple-iphone-smartphone-desk.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "name": "Smartphone Stand",
+    "category": "Accessories",
+    "rating": 4.3,
+    "description": "Adjustable smartphone stand, ideal for video calls, streaming, or desk organization.",
+    "price": 19.99,
+    "stock": 100
   }
 ]
