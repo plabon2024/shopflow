@@ -44,7 +44,7 @@ export default function ProductCard({
       <div className="mx-auto rounded-xl overflow-hidden transition hover:shadow-[4px_4px_22px_5px] shadow-[0px_0px_9px_3px] shadow-primary/20 w-full max-w-xs flex flex-col">
         {/* Image + Category */}
         <div className="relative">
-          <Image width={500} height={500} src={image} alt={name} className="w-full h-48 object-cover" />
+          <Image width={500} height={500} src={image} alt={name} className="w-full h-56 object-contain" />
           <span className="absolute top-2 right-2 bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">
             {category}
           </span>

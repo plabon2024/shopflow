@@ -46,7 +46,7 @@ export default function ProductDetails() {
 
   return (
     <div className="min-h-[60vh] flex justify-center items-center p-10 max-w-5xl mx-auto">
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8 shadow-md p-4">
         <Image
           src={product.image}
           alt={product.name}
@@ -56,11 +56,11 @@ export default function ProductDetails() {
         />
         <div className="flex flex-col gap-4">
           <h1 className="text-3xl font-bold">{product.name}</h1>
-          <p className="text-gray-600">{product.category}</p>
+          <p className="">{product.category}</p>
           <p className="text-yellow-500 font-semibold">
             Rating: {product.rating}
           </p>
-          <p className="text-gray-700">{product.description}</p>
+          <p className="">{product.description}</p>
           <p className="text-xl font-bold">${product.price}</p>
           {product.stock ? (
             <p className="text-green-600 font-semibold">In Stock</p>
