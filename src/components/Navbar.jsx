@@ -48,18 +48,23 @@ export default function Navbar() {
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                     <NavigationMenuLink href="/dashboard">
-                     Dashboard
+                      Dashboard
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                     <NavigationMenuLink href="/dashboard/add-product">
-                     Add Product
+                      Add Product
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 </>
               ) : (
                 <>
                   {" "}
+                  <NavigationMenuItem>
+                    <NavigationMenuLink href="/products">
+                      Products{" "}
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
                   <NavigationMenuItem>
                     <NavigationMenuLink href="/signup">
                       Sign Up
@@ -131,6 +136,9 @@ export default function Navbar() {
                   ) : (
                     <>
                       {" "}
+                      <Link href="/products" className="font-medium">
+                        Products
+                      </Link>
                       <Link href="/signin" className="font-medium">
                         Sign In
                       </Link>

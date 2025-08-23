@@ -1,11 +1,12 @@
+"use client";
+import AllProduct from "@/components/AllProduct";
 
-import AllProduct from '@/components/AllProduct'
-import React from 'react'
+import React, { useEffect } from "react";
 
 export default function page() {
   return (
-    <div className='container mx-auto'>
+    <div className="container mx-auto ">
       <AllProduct></AllProduct>
     </div>
-  )
+  );
 }

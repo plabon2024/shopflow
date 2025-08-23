@@ -31,7 +31,7 @@ export const Hero = () => {
                 </Link>
                 <Button variant="outline" className="group">
                   Learn more{" "}
-                  <Link href={"/about"}>
+                  <Link href={"/products"}>
                     <ExternalLink className="cursor-pointer ml-2 h-4 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </Button>

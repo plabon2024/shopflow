@@ -1,7 +1,10 @@
 import React from 'react'
+import AddProduct from './AddProduct'
 
 export default function page() {
   return (
-    <div> product page</div>
+    <div>
+      <AddProduct></AddProduct>
+    </div>
   )
 }

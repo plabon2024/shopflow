@@ -7,6 +7,9 @@ export default function page() {
     <div>
       <Hero></Hero>
       <div className="container mx-auto">
+        <h1 className="text-primary font-bold text-2xl text-center">
+          Highlited product
+        </h1>
         <ProductHighlight></ProductHighlight>
       </div>
     </div>
