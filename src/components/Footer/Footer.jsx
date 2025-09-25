@@ -1,9 +1,9 @@
 "use client";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import Link from "next/link";
-import Logo from "./Logo";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import Logo from "../Logo/Logo";
 
 const Footer = () => {
   const { status } = useSession();

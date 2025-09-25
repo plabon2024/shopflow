@@ -11,7 +11,10 @@ export default function UploadImage({ onUpload }) {
     setUploading(true);
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET);
+    formData.append(
+      "upload_preset",
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+    );
 
     try {
       const res = await fetch(
@@ -38,7 +41,9 @@ export default function UploadImage({ onUpload }) {
         onChange={handleFileChange}
         className="cursor-pointer"
       />
-      {uploading && <p className="text-sm text-muted-foreground">Uploading...</p>}
+      {uploading && (
+        <p className="text-sm text-muted-foreground">Uploading...</p>
+      )}
     </div>
   );
 }

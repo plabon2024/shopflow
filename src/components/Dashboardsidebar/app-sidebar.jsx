@@ -1,15 +1,14 @@
 "use client";
 
-import * as React from "react";
 import {
   IconDashboard,
   IconInnerShadowTop,
   IconListDetails,
 } from "@tabler/icons-react";
 
-import { NavMain } from "@/components/nav-main";
+import { NavMain } from "@/components/Dashboardsidebar/nav-main";
 
-import { NavUser } from "@/components/nav-user";
+import { NavUser } from "@/components/Dashboardsidebar/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -19,9 +18,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import Logo from "./Logo";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
+import Logo from "../Logo/Logo";
 
 const data = {
   navMain: [
@@ -38,7 +37,8 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }) {  const { data: session } = useSession();
+export function AppSidebar({ ...props }) {
+  const { data: session } = useSession();
 
   const user = {
     name: session?.user?.name || "Guest",
@@ -49,7 +49,7 @@ export function AppSidebar({ ...props }) {  const { data: session } = useSession
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>
+          <SidebarMenuItem> 
             <SidebarMenuButton
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"

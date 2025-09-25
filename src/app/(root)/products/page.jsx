@@ -1,7 +1,6 @@
-"use client";
-import AllProduct from "@/components/AllProduct";
 
-import React, { useEffect } from "react";
+import AllProduct from "@/components/product/AllProduct";
+
 
 export default function page() {
   return (

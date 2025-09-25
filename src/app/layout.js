@@ -3,7 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import { Toaster } from "sonner";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,15 +29,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${lora.variable} ${geistMono.variable} antialiased`}
       >
         <div className="bg-primary/10">
           <NextAuthProvider>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ThemeProvider  attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
               {children}
-               <Toaster richColors position="top-center" />
+              <Toaster richColors position="top-center" />
             </ThemeProvider>
           </NextAuthProvider>
         </div>

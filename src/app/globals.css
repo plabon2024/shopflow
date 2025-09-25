@@ -2,6 +2,18 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+/* Allow shadows to be visible */
+.slick-slider {
+  overflow: visible; /* allow shadows outside slider */
+}
+
+.slick-list {
+  overflow: visible; /* by default it's hidden */
+}
+
+.slick-slide > div {
+  overflow: visible; /* make sure the inner slide div allows shadow */
+}
 
 /* *{
   border:1px solid red;

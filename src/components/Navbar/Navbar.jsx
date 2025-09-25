@@ -16,12 +16,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Link from "next/link";
-import Logo from "./Logo";
-import ThemeToggle from "./ThemeToggle";
-import { signOut, useSession } from "next-auth/react";
-import { Separator } from "./ui/separator";
 import { IconLogout } from "@tabler/icons-react";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import Logo from "../Logo/Logo";
+import ThemeToggle from "../ThemeTogglebutton/ThemeToggle";
 export default function Navbar() {
   const { data, status } = useSession();
   console.log("nav 13:", status);

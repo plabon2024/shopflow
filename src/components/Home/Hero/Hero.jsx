@@ -1,10 +1,7 @@
 import { ExternalLink } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import ProductCard from "../ProductCard";
 
 export const Hero = () => {
   return (

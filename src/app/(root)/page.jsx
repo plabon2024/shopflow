@@ -1,16 +1,14 @@
-import { Hero } from "@/components/sections/Hero";
-import ProductHighlight from "@/components/sections/ProductHighlight";
-import React from "react";
+import { Hero } from "@/components/Home/Hero/Hero";
+import ProductHighlight from "@/components/Home/ProductHighlight/ProductHighlight";
+import Sale from "@/components/Home/Sale/Sale";
 
 export default function page() {
   return (
     <div>
       <Hero></Hero>
       <div className="container mx-auto">
-        <h1 className="text-primary font-bold text-2xl text-center">
-          Highlited product
-        </h1>
         <ProductHighlight></ProductHighlight>
+        <Sale></Sale>
       </div>
     </div>
   );

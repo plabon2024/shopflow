@@ -1,8 +1,9 @@
+"use client";
 import { useTheme } from "next-themes";
 import {
-  useThemeTransition,
   ThemeToggleButton,
-} from "./ui/shadcn-io/theme-toggle-button";
+  useThemeTransition,
+} from "../ui/shadcn-io/theme-toggle-button";
 
 export default function Example() {
   const { theme, setTheme } = useTheme();
