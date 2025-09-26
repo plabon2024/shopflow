@@ -79,12 +79,12 @@ export default function AllProduct() {
   return (
     <div className="container mx-auto px-4 py-6 flex gap-8">
       {/* ======= LEFT SIDEBAR FILTERS ======= */}
-      <div className="w-64 bg-gray-100 rounded-lg p-4 shadow h-fit">
-        <h2 className="text-lg font-semibold mb-4 text-gray-800">Filters</h2>
+      <div className="w-64 bg-secondary rounded-lg p-4 shadow h-fit">
+        <h2 className="text-lg font-semibold mb-4 ">Filters</h2>
 
         {/* Search */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium  mb-1">
             Search
           </label>
           <input
@@ -98,13 +98,13 @@ export default function AllProduct() {
 
         {/* Category */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium 0 mb-1">
             Category
           </label>
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full rounded-md border px-3 py-2 text-sm bg-secondary focus:outline-none focus:ring-1 focus:ring-primary"
           >
             <option value="">All Categories</option>
             {categories.map((cat) => (
@@ -117,13 +117,13 @@ export default function AllProduct() {
 
         {/* Rating */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium  mb-1">
             Minimum Rating
           </label>
           <select
             value={selectedRating}
             onChange={(e) => setSelectedRating(e.target.value)}
-            className="w-full rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full rounded-md border px-3 py-2 bg-secondary text-sm focus:outline-none focus:ring-1 focus:ring-primary"
           >
             <option value="">All Ratings</option>
             <option value="5">5 Stars</option>
@@ -136,7 +136,7 @@ export default function AllProduct() {
 
         {/* In Stock Checkbox */}
         <div className="mb-4">
-          <label className="flex items-center gap-2 text-sm text-gray-700">
+          <label className="flex items-center gap-2 text-sm ">
             <input
               type="checkbox"
               checked={inStockOnly}
@@ -150,7 +150,7 @@ export default function AllProduct() {
         {/* Clear All Filters */}
         <button
           onClick={clearFilters}
-          className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-md py-2 text-sm font-medium"
+          className="w-full bg-accent cursor-pointer active:scale-95 rounded-md py-2 text-sm font-medium"
         >
           Clear All Filters
         </button>
@@ -164,15 +164,15 @@ export default function AllProduct() {
             Products ({sortedProducts.length})
           </h1>
 
-          <div className="flex items-center gap-2">
-            <label htmlFor="sort" className="text-gray-700 text-sm font-medium">
+          <div className="flex items-center bg-accent gap-2">
+            <label htmlFor="sort" className="px-2 rounded-sm text-sm font-medium">
               Sort by:
             </label>
             <select
               id="sort"
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
-              className="rounded-md border border-gray-300 px-3 py-1 text-sm focus:outline-none"
+              className="rounded-md border bg-secondary text-primary border-gray-300 px-3 py-1 text-sm focus:outline-none"
             >
               <option value="">Default</option>
               <option value="price-asc">Price: Low to High</option>
@@ -189,7 +189,7 @@ export default function AllProduct() {
             No products found matching your filters.
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 min-h-[70vh]">
             {sortedProducts.map((product) => (
               <ProductCard
                 key={product._id}
