@@ -21,10 +21,15 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import Logo from "../Logo/Logo";
 import ThemeToggle from "../ThemeTogglebutton/ThemeToggle";
+import { useCart } from "@/context/CartContext";
 export default function Navbar() {
+const { setUser } = useCart();
+
   const { data, status } = useSession();
-  console.log("nav 13:", status);
-  console.log("nav 13:", data);
+if(data?.user){
+  console.log(data.user)
+  setUser(data.user)
+}
   return (
     <section className="py-4  sticky top-0 backdrop-blur-3xl bg-primary/30 z-50">
       <div className="container mx-auto">

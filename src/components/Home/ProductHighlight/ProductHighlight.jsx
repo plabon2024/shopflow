@@ -43,48 +43,48 @@ export default function ProductHighlight() {
   }
 
   // react-slick settings
-  const settings = {
-    infinite: products.length > 4,
-    speed: 600,
+ const settings = {
+    infinite: true,
+    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    swipeToSlide: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 1025,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
+          infinite: true,
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 769,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
+          infinite: true,
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          infinite: true,
         },
       },
-    ],
-  };
+    ],}
+
 
   return (
     <>
       <h1 className="text-primary font-bold text-2xl text-center">
         Highlited product
       </h1>
-      <div className="w-full overflow-visible py-10  ">
-        <Slider {...settings}>
+      <div className="w-full overflow-visible py-10 mx-auto ">
+        <Slider {...settings} >
           {products.map((product) => (
             <ProductCard
               key={product._id}

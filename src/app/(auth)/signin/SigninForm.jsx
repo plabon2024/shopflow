@@ -14,13 +14,17 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
+import { useCart } from "@/context/CartContext";
 
 export function SigninForm() {
+   const { setUser } = useCart();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
+      const { data, status } = useSession();
+    
     e.preventDefault();
     setLoading(true)
     const result = await signIn("credentials", {

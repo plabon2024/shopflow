@@ -6,7 +6,8 @@ export default function page() {
   return (
     <div>
       <Hero></Hero>
-      <div className="container mx-auto">
+      <div className="container mx-auto p-4">
+
         <ProductHighlight></ProductHighlight>
         <Sale></Sale>
       </div>

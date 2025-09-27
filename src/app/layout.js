@@ -5,6 +5,7 @@ import NextAuthProvider from "@/providers/NextAuthProvider";
 import { Toaster } from "sonner";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { CartProvider } from "@/context/CartContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,11 +36,14 @@ export default function RootLayout({ children }) {
       >
         <div className="bg-primary/10">
           <NextAuthProvider>
-            <ThemeProvider  attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange>
-              {children}
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <CartProvider>{children}</CartProvider>
+
               <Toaster richColors position="top-center" />
             </ThemeProvider>
           </NextAuthProvider>
