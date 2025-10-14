@@ -9,7 +9,7 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState(null); // Set this from your auth system
   const [loading, setLoading] = useState(true);
-console.log(user,"from context")
+  console.log(user, "from context");
   // Load cart from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
@@ -25,7 +25,8 @@ console.log(user,"from context")
   // Fetch server cart when user logs in
   useEffect(() => {
     if (user) {
-      axios.get("/api/cart")
+      axios
+        .get("/api/cart")
         .then((res) => {
           const serverCart = res.data.cart || [];
           mergeCarts(serverCart, cart);

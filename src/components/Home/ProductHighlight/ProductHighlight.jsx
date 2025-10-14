@@ -1,7 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Slider from "react-slick";
+import { useEffect, useRef, useState } from "react";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+
+import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCard from "../../product/ProductCard";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
@@ -9,7 +15,8 @@ import PrevArrow from "./PrevArrow";
 export default function ProductHighlight() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
   useEffect(() => {
     fetch("/api/products", {
       next: { revalidate: 60 },
@@ -42,65 +49,46 @@ export default function ProductHighlight() {
     );
   }
 
-  // react-slick settings
- const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1025,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-    ],}
-
-
   return (
-    <>
-      <h1 className="text-primary font-bold text-2xl text-center">
-        Highlited product
+    <div className="w-full py-10">
+      <h1 className="text-primary font-bold text-2xl text-center mb-8">
+        Highlighted Products
       </h1>
-      <div className="w-full overflow-visible py-10 mx-auto ">
-        <Slider {...settings} >
+      <div className="container  mx-auto px-4">
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          spaceBetween={20}
+          slidesPerView={1}
+          loop={true}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1536: { slidesPerView: 4 },
+          }}
+        >
           {products.map((product) => (
-            <ProductCard
-              key={product._id}
-              id={product._id}
-              image={product.image}
-              name={product.name}
-              category={product.category}
-              rating={product.rating}
-              description={product.description}
-              price={product.price}
-              stock={product.stock}
-            />
-          ))}
-        </Slider>
+            <SwiperSlide key={product._id}>
+              <ProductCard {...product} />
+            </SwiperSlide>
+          ))}{" "}
+          <div ref={prevRef}>
+            <PrevArrow />
+          </div>
+          <div ref={nextRef}>
+            <NextArrow />
+          </div>
+        </Swiper>
       </div>
-      {/* </div> */}
-    </>
+    </div>
   );
 }

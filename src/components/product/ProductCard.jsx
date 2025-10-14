@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  FaStar,
-  FaStarHalfAlt,
   FaRegStar,
-  FaShoppingCart,
-  FaHeart,
-  FaEye,
+  FaStar,
+  FaStarHalfAlt
 } from "react-icons/fa";
 
 export default function ProductCard({
-  id,
+  _id,
   image,
   name,
   category,
@@ -40,7 +37,7 @@ export default function ProductCard({
   };
 
   return (
-    <Link href={`/products/${id}`} key={id}>
+    <Link href={`/products/${_id}`} key={_id}>
       <div className="my-2 mx-auto md:mx-2  rounded-xl  transition hover:shadow-[4px_4px_22px_5px] shadow-[0px_0px_9px_3px] shadow-primary/20 w-full max-w-xs flex flex-col">
         {/* Image + Category */}
         <div className="relative">

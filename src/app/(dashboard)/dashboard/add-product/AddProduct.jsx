@@ -1,19 +1,18 @@
-"use client";
-import { useState } from "react";
 import UploadImage from "@/components/imageupload/UploadImage";
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardHeader,
   CardContent,
   CardFooter,
+  CardHeader,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
 import { toast } from "sonner";
 
-export default function CreateProduct() {
+export default function AddProduct() {
   const [imageUrl, setImageUrl] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,7 +48,6 @@ export default function CreateProduct() {
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="flex flex-col gap-6">
-     
           <div className="mb-4">
             <Label>Product Image</Label>
             <UploadImage onUpload={setImageUrl} />
