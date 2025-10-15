@@ -4,11 +4,13 @@ import {
   IconDashboard,
   IconInnerShadowTop,
   IconListDetails,
+  IconUser,
+  IconSettings,
 } from "@tabler/icons-react";
 
 import { NavMain } from "@/components/Dashboardsidebar/nav-main";
-
 import { NavUser } from "@/components/Dashboardsidebar/nav-user";
+
 import {
   Sidebar,
   SidebarContent,
@@ -18,24 +20,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Logo from "../Logo/Logo";
-
-const data = {
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: IconDashboard,
-    },
-    {
-      title: "Add Product",
-      url: "/dashboard/add-product",
-      icon: IconListDetails,
-    },
-  ],
-};
 
 export function AppSidebar({ ...props }) {
   const { data: session } = useSession();
@@ -44,7 +32,25 @@ export function AppSidebar({ ...props }) {
     name: session?.user?.name || "Guest",
     email: session?.user?.email || "guest@example.com",
     avatar: session?.user?.image || "",
+    role: session?.user?.role || "user",
   };
+
+  // Role-based menu items
+  const menuItems = [
+    { title: "Dashboard", url: "/dashboard", icon: IconDashboard },
+    // Add Product only for admin and seller
+    ...(user.role === "admin" || user.role === "seller"
+      ? [
+          {
+            title: "Add Product",
+            url: "/dashboard/add-product",
+            icon: IconListDetails,
+          },
+        ]
+      : []),
+    { title: "Profile", url: "/dashboard/profile", icon: IconUser },
+  ];
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -56,15 +62,17 @@ export function AppSidebar({ ...props }) {
             >
               <Link href="/">
                 <IconInnerShadowTop className="!size-5" />
-                <Logo></Logo>
+                <Logo />
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={menuItems} />
       </SidebarContent>
+
       <SidebarFooter>
         <NavUser user={user} />
       </SidebarFooter>

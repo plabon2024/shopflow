@@ -1,4 +1,5 @@
 "use client";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,21 +13,24 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { useCart } from "@/context/CartContext";
+import { useRouter } from "next/navigation";
 
 export function SigninForm() {
-   const { setUser } = useCart();
+  const { setUser } = useCart();
+  const { data: session } = useSession();
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
-      const { data, status } = useSession();
-    
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
+
     const result = await signIn("credentials", {
       email,
       password,
@@ -39,17 +43,22 @@ export function SigninForm() {
       toast.error(result.error || "Invalid email or password");
     } else {
       toast.success("Login successful!");
+      if (session?.user) {
+        setUser(session.user);
+      }
+      router.push("/dashboard"); // redirect after login
     }
   }
+
   return (
-    <div className="flex flex-col gap-6 ">
+    <div className="flex flex-col gap-6">
       <Card>
         <CardHeader>
           <CardTitle className="text-center font-light text-2xl">
             Welcome back
           </CardTitle>
           <CardDescription className="text-center">
-            Enter your email below to login to your account
+            Enter your email below to log in to your account
           </CardDescription>
         </CardHeader>
 
@@ -66,6 +75,7 @@ export function SigninForm() {
                   required
                 />
               </div>
+
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
@@ -83,22 +93,22 @@ export function SigninForm() {
                   required
                 />
               </div>
-              <div className="flex flex-col gap-3">
-               <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Signing in..." : "Login"}
-            </Button>
-              </div>
-            </div>{" "}
-          </form>{" "}
+
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? "Signing in..." : "Login"}
+              </Button>
+            </div>
+          </form>
+
           <div className="pt-6">
             <Button
               onClick={() => signIn("google")}
               variant="outline"
-              className="w-full flex"
+              className="w-full flex items-center justify-center gap-2"
             >
               <svg
-                width="256"
-                height="262"
+                width="20"
+                height="20"
                 viewBox="0 0 256 262"
                 xmlns="http://www.w3.org/2000/svg"
                 preserveAspectRatio="xMidYMid"
@@ -122,6 +132,7 @@ export function SigninForm() {
               </svg>
               Login with Google
             </Button>
+
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
               <Link href="/signup" className="underline underline-offset-4">

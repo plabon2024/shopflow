@@ -261,12 +261,6 @@ export default function DashboardPage() {
             {" "}
             <Button variant="secondary">Profile</Button>
           </Link>
-          <Link href={"/dashboard/settings"}>
-            {" "}
-            <Button className="bg-white text-primary hover:bg-indigo-100">
-              Settings
-            </Button>
-          </Link>
         </div>
       </div>
 
