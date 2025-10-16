@@ -84,9 +84,7 @@ export default function AllProduct() {
 
         {/* Search */}
         <div className="mb-4">
-          <label className="block text-sm font-medium  mb-1">
-            Search
-          </label>
+          <label className="block text-sm font-medium  mb-1">Search</label>
           <input
             type="text"
             placeholder="Search by name"
@@ -98,9 +96,7 @@ export default function AllProduct() {
 
         {/* Category */}
         <div className="mb-4">
-          <label className="block text-sm font-medium 0 mb-1">
-            Category
-          </label>
+          <label className="block text-sm font-medium 0 mb-1">Category</label>
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -165,7 +161,10 @@ export default function AllProduct() {
           </h1>
 
           <div className="flex items-center bg-accent gap-2">
-            <label htmlFor="sort" className="px-2 rounded-sm text-sm font-medium">
+            <label
+              htmlFor="sort"
+              className="px-2 rounded-sm text-sm font-medium"
+            >
               Sort by:
             </label>
             <select
@@ -191,17 +190,18 @@ export default function AllProduct() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 min-h-[70vh]">
             {sortedProducts.map((product) => (
-              <ProductCard
-                key={product._id}
-                id={product._id}
-                image={product.image}
-                name={product.name}
-                category={product.category}
-                rating={product.rating}
-                description={product.description}
-                price={product.price}
-                stock={product.stock}
-              />
+              <div key={product._id}>
+                <ProductCard
+                  _id={product._id}
+                  image={product.image}
+                  name={product.name}
+                  category={product.category}
+                  rating={product.rating}
+                  description={product.description}
+                  price={product.price}
+                  stock={product.stock}
+                />
+              </div>
             ))}
           </div>
         )}

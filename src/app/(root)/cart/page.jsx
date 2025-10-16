@@ -4,14 +4,14 @@ import { useCart } from "@/context/CartContext";
 import { ChevronLeft, ChevronRight, Trash2, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { toast } from "sonner";
 
 export default function CartPage() {
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
   const [promoCode, setPromoCode] = useState("");
-  const [selectedAddress, setSelectedAddress] = useState(
-    ""
-  );
-
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const { data: session } = useSession();
   // Calculate totals
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -20,6 +20,39 @@ export default function CartPage() {
   const taxRate = 0.02;
   const tax = subtotal * taxRate;
   const total = subtotal + tax;
+
+  // Stripe
+
+  const handleCheckout = async () => {
+    if (!selectedAddress || selectedAddress.trim() === "") {
+      toast.warning("Please enter your address before proceeding to checkout.");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: cart,
+          userId: session?.user?._id,
+          address: selectedAddress,
+          promoCode: promoCode,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.url) {
+        window.location.href = data.url; // redirect to Stripe
+      } else {
+        toast.warning("Checkout error:", data);
+        toast.warning("Could not start checkout. Try again.");
+      }
+    } catch (err) {
+      toast.warning(err);
+      toast.warning("Checkout failed. Try again.");
+    }
+  };
 
   if (cart.length === 0) {
     return (
@@ -194,6 +227,7 @@ export default function CartPage() {
                   <input
                     type="text"
                     value={selectedAddress}
+                    required
                     onChange={(e) => setSelectedAddress(e.target.value)}
                     placeholder="Enter your address"
                     className="w-full bg-background border border-border rounded-lg p-3 pr-10 text-sm text-card-foreground focus:border-primary outline-none transition"
@@ -249,7 +283,10 @@ export default function CartPage() {
               </div>
 
               {/* Checkout Button */}
-              <button className="w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg mt-6 hover:bg-primary/90 transition shadow-md hover:shadow-lg">
+              <button
+                onClick={handleCheckout}
+                className="w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg mt-6 hover:bg-primary/90 transition shadow-md hover:shadow-lg"
+              >
                 Proceed to Checkout
               </button>
             </div>

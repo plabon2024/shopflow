@@ -28,6 +28,7 @@ import Link from "next/link";
 import Logo from "../Logo/Logo";
 import ThemeToggle from "../ThemeTogglebutton/ThemeToggle";
 import { useCart } from "@/context/CartContext";
+import { useEffect } from "react";
 
 export default function Navbar() {
   const { cart, setUser } = useCart();
@@ -36,10 +37,13 @@ export default function Navbar() {
   // Calculate total items in cart
   const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
 
-  if (data?.user) {
+  // ✅ Move setUser here
+  useEffect(() => {
+    if (data?.user) {
+      setUser(data.user);
+    }
+  }, [data?.user, setUser]);
 
-    setUser(data.user);
-  }
 
   return (
     <section className="py-4  sticky top-0 backdrop-blur-3xl bg-primary/30 z-50">

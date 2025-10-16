@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FaRegStar,
-  FaStar,
-  FaStarHalfAlt
-} from "react-icons/fa";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 export default function ProductCard({
   _id,
