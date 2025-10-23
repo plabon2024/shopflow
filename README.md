@@ -1,4 +1,3 @@
-Got it. Since your project name is **ShopFlow** and you’re using Next.js + Cloudinary + NextAuth + shadcn/ui, here’s a clean and practical `README.md` you can drop into your repo:
 
 ```markdown
 # 🛒 ShopFlow
@@ -134,10 +133,5 @@ App will be available at [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome!
-Fork the repo, create a new branch, and open a PR.
-
----
 
