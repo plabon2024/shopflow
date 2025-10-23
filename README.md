@@ -1,5 +1,4 @@
 
-```markdown
 # 🛒 ShopFlow
 
 ShopFlow is a modern e-commerce web application built with **Next.js**, featuring authentication, image upload, product management, and a clean UI powered by **shadcn/ui**.
